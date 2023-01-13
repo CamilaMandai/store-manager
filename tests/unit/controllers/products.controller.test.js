@@ -13,7 +13,7 @@ describe('Teste da camada controller de produtos', function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
     sinon
-      .stub(productService, 'findAll')
+      .stub(productsService, 'findAll')
       .resolves({ type: null, message: allProducts });
     //act
     await productsController.listProducts(req, res);
@@ -28,7 +28,7 @@ describe('Teste da camada controller de produtos', function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
     sinon
-      .stub(productService, 'getById')
+      .stub(productsService, 'getById')
       .resolves({ type: null, message: allProducts[0] });
     //act
     await productsController.getById(req, res);
