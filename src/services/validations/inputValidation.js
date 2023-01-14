@@ -1,4 +1,4 @@
-const { idSchema } = require('./schemas');
+const { idSchema, insertProductSchema } = require('./schemas');
 // const productsModel = require('../../models/products.model');
 
 const validateId = async (id) => {
@@ -11,6 +11,17 @@ const validateId = async (id) => {
   return { type: null, message: '' };
 };
 
+const validateInsertProduct = async (product) => {
+  const { error } = insertProductSchema.validate(product);
+  if (error) {
+    return {
+      type: 'INVALID_PRODUCT_VALUE', message: '"name" length must be at least 5 characters long',
+    };
+  }
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validateId,
+  validateInsertProduct,
 };

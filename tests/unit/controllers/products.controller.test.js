@@ -26,7 +26,7 @@ describe('Teste da camada controller de produtos', function () {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(allProducts);
   })
-  it('Busca por todos os produtos', async function () {
+  it('Busca por id', async function () {
     // arrange
     const res = {};
     const req = { params: 1 };
@@ -36,7 +36,7 @@ describe('Teste da camada controller de produtos', function () {
       .stub(productsService, 'getById')
       .resolves({ type: null, message: allProducts[0] });
     //act
-    await productsController.getById(req, res);
+    await productsController.getProduct(req, res);
     //assertion
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(allProducts[0]);

@@ -54,5 +54,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "bbd3b442-740e-4bad-8ab6-077d5c9275d4",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3006/products",
+    "url": "http://localhost:3006/products",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-13T23:44:40.040Z",
+    "modified": "2023-01-14T00:32:17.945Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"kgfgfgfgfg\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

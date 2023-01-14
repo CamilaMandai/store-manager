@@ -18,7 +18,26 @@ const getById = async (productId) => {
   return product;
 };
 
+const insert = async (product) => {
+  // const columns = Object.keys(product).join(', ');
+  // console.log(columns);
+  // const placeholders = Object.keys(product)
+    // .map((_key) => '?')
+    // .join(', ');
+  // console.log([...Object.values(product)]);
+  // const [{ insertId }] = await connection.execute(
+  //   `INSERT INTO StoreManager.products (${columns}) VALUES (${placeholders})`,
+  // [...Object.values(product)],
+  // );
+   const [{ insertId }] = await connection.execute(
+    'INSERT INTO StoreManager.products (name) VALUES (?)',
+    [...Object.values(product)],
+  );
+  return insertId;
+};
+
 module.exports = {
   findAll,
   getById,
+  insert,
 };

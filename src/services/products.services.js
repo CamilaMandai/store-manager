@@ -16,7 +16,16 @@ const getById = async (id) => {
   return { type: null, message: product };
 };
 
+const insert = async (name) => {
+  const error = inputValidation.validateInsertProduct(name);
+  if (error.type) return error;
+  const productId = await productsModel.insert({ name });
+  const newProduct = await productsModel.getById(productId);
+  return { type: null, message: { name: newProduct.name } };
+};
+
 module.exports = {
   findAll,
   getById,
+  insert,
 };
