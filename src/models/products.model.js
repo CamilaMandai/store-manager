@@ -19,19 +19,9 @@ const getById = async (productId) => {
 };
 
 const insert = async (product) => {
-  // const columns = Object.keys(product).join(', ');
-  // console.log(columns);
-  // const placeholders = Object.keys(product)
-    // .map((_key) => '?')
-    // .join(', ');
-  // console.log([...Object.values(product)]);
-  // const [{ insertId }] = await connection.execute(
-  //   `INSERT INTO StoreManager.products (${columns}) VALUES (${placeholders})`,
-  // [...Object.values(product)],
-  // );
    const [{ insertId }] = await connection.execute(
     'INSERT INTO StoreManager.products (name) VALUES (?)',
-    [product],
+    [product.name],
   );
   return insertId;
 };
