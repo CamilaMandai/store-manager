@@ -24,6 +24,7 @@ const insertProduct = async (req, res) => {
       .status(422)
       .json(message);
   } 
+  return res.status(201).json({ message });
 };
 
 module.exports = {
