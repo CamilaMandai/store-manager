@@ -21,7 +21,7 @@ const insert = async (name) => {
   if (error.type) return error;
   const productId = await productsModel.insert({ name });
   const newProduct = await productsModel.getById(productId);
-  return { type: null, message: { name: newProduct.name } };
+  return { type: null, message: newProduct };
 };
 
 module.exports = {
