@@ -31,7 +31,7 @@ const insert = async (product) => {
   // );
    const [{ insertId }] = await connection.execute(
     'INSERT INTO StoreManager.products (name) VALUES (?)',
-    [...Object.values(product)],
+    [product],
   );
   return insertId;
 };
