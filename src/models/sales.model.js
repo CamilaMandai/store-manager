@@ -11,7 +11,7 @@ const insert = async (products) => {
     await connection.query(
     'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES ?',
     nestedValues,
-    (err) => { if (err) throw err; connection.end(); },
+    // (err) => { if (err) throw err; connection.end(); },
   );
   const saleInserted = {
     id: insertId,

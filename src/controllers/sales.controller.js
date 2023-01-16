@@ -1,4 +1,4 @@
-const salesServices = require('../services/sales.service');
+const salesServices = require('../services/sales.services');
 
 const insertSale = async (req, res) => {
   const products = req.body;

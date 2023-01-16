@@ -23,7 +23,15 @@ describe('Teste da camada service de produtos', function () {
     // assertion
     expect(products.type).to.be.equal(null);
     expect(products.message).to.be.deep.equal(allProducts[0]);
-  })
+  });
+  // it('Busca por um id inválido', async function () {
+    // arrange
+    // sinon.stub(productsModel, 'getById').resolves(undefined);
+    // act
+    // const products = await productsService.getById('idInvalido');
+    // assertion
+    //expect(products).to.be.equal('"id" must be a number');
+  // })
   afterEach(function () {
     sinon.restore();
   });
