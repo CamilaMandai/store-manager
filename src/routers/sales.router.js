@@ -4,6 +4,10 @@ const validadeSaleFields = require('../middlewares/validadeSaleFields');
 
 const router = express.Router();
 
+router.get('/', salesController.findAll);
+
+router.get('/:id', salesController.getById);
+
 router.post('/',
   validadeSaleFields.validadeIdField,
   validadeSaleFields.validadeQuantityField,
