@@ -24,8 +24,15 @@ const insert = async (name) => {
   return { type: null, message: newProduct };
 };
 
+const update = async (id, name) => {
+  await productsModel.update(id, name);
+  const updatedProduct = await productsModel.getById(id);
+  return { type: null, message: updatedProduct };
+};
+
 module.exports = {
   findAll,
   getById,
   insert,
+  update,
 };
