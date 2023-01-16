@@ -37,7 +37,7 @@ describe('Teste da camada controller de sales', function () {
     //act
     await salesController.insertSale(req, res);
     //assertion
-    expect(res.status).to.have.been.calledWith(200);
+    expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith(saleCreateResponse);
   })
   afterEach(function () {
