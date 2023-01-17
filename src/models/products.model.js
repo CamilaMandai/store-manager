@@ -42,7 +42,7 @@ const deleteProduct = async (id) => {
 
 const search = async (q) => {
   const allProducts = await connection.execute('SELECT * FROM StoreManager.products');
-  if (!q) return allProducts[0];
+  if (!q || q === '') return allProducts[0];
   const resultQ = allProducts[0].filter(({ name }) => name.match(q));
   const products = resultQ.map(async ({ name }) => {
     const query = 'SELECT * FROM StoreManager.products WHERE name=?';
