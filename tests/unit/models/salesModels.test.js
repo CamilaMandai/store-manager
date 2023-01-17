@@ -20,14 +20,14 @@ describe('Teste da camada Models de sales', function () {
     // assertion
     expect(response).to.be.deep.equal(allSales);
   })
-  // it('testa se é possível buscar uma venda pelo id', async function () {
+  it('testa se é possível buscar uma venda pelo id', async function () {
     // arrange
-  //  sinon.stub(connection, 'execute').resolves(saleByID);
+    sinon.stub(connection, 'execute').resolves([saleByID]);
     // act
-  // const response = await salesModel.getById(1);
+    const response = await salesModel.getById(1);
     // assertion
-  // expect(response).to.be.deep.equal(saleByID);
-  // })
+    expect(response).to.be.deep.equal(saleByID);
+  })
   it('testa se é possível cadastrar uma venda com sucesso', async function () {
     // arrange
     sinon.stub(connection, 'execute').resolves([{ insertId: 3 }]);

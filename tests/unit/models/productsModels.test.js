@@ -25,6 +25,16 @@ describe('Teste de unidade da camada model de produtos', function () {
     //assert
     expect(produto).to.be.deep.equal(allProducts[0]);
   })
+  it('Cadastra um produto', async function () {
+    //arrange
+    sinon.stub(connection, 'execute').resolves([{ insertId: 1 }]);
+    //act
+    const insertId = await productsModel.insert({
+      name: "ProdutoX"
+    });
+    //assert
+    expect(insertId).to.be.equal(1);
+  })
   // it('Busca por um produto que não existe', async function () {
     //arrange
     // sinon.stub(connection, 'execute').resolves([{ message: 'Product not found' }]);
