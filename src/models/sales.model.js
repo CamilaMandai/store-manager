@@ -44,9 +44,23 @@ const deleteSale = async (id) => {
   await connection.execute('DELETE FROM StoreManager.sales WHERE id=?', [id]);
 };
 
+const update = async (id, products) => {
+  products.forEach(async (product) => {
+  const query = `UPDATE StoreManager.sales_products SET product_id=${product.productId},`
+    + `quantity=${product.quantity} WHERE sale_id=${id}`;
+  await connection.execute(query);
+  });
+  const updatedSale = await getById(id);
+  return {
+    saleId: id,
+    itemsUpdated: updatedSale,
+  };
+};
+
 module.exports = {
   findAll,
   getById,
   insert,
   deleteSale,
+  update,
 };

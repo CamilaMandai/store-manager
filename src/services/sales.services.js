@@ -39,9 +39,19 @@ const deleteSale = async (id) => {
   return { type: null, message: 'Sale deleted' };
 };
 
+const update = async (id, products) => {
+  const errors = await validateProductId(products);
+  if (errors) return { type: 'INVALID_ID', message: 'Product not found' };
+  const error = await validateSaleId(id);
+  if (error) return { type: 'INVALID_ID', message: 'Sale not found' };
+  const updatedSale = await salesModel.update(id, products);
+  return { type: null, message: updatedSale };
+};
+
 module.exports = {
   findAll,
   getById,
   insert,
   deleteSale,
+  update,
 };

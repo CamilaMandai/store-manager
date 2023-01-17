@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/', productsController.listProducts);
 
+router.get('/search', productsController.search);
+
 router.get('/:id', validateProductFields.checkProductId, productsController.getProduct);
 
 router.post('/', validateProductFields.checkProductName, productsController.insertProduct);
