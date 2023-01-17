@@ -4,4 +4,14 @@ const allProducts = [
   { id: 3, name: 'Escudo do Capitão América' },
 ];
 
-module.exports = allProducts;
+const oneProduct = {
+  type: null, message: {
+    id: 4,
+    name: "ProdutoX",
+  }
+};
+
+module.exports = {
+  allProducts,
+  oneProduct,
+};

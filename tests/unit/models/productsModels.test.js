@@ -4,7 +4,7 @@ const productsModel = require('../../../src/models/products.model');
 
 const connection = require('../../../src/models/connection');
 
-const allProducts = require('../mocks/products.mock');
+const { allProducts } = require('../mocks/products.mock');
 
 describe('Teste de unidade da camada model de produtos', function () {
   it('Busca todos os produtos do banco de dados', async function () {
@@ -35,14 +35,30 @@ describe('Teste de unidade da camada model de produtos', function () {
     //assert
     expect(insertId).to.be.equal(1);
   })
-  // it('Busca por um produto que não existe', async function () {
+  it('Busca por um produto que não existe', async function () {
     //arrange
-    // sinon.stub(connection, 'execute').resolves([{ message: 'Product not found' }]);
+     sinon.stub(connection, 'execute').resolves([[]]);
     //act
-    // const produto = await productsModel.getById(12);
+     const produto = await productsModel.getById(12);
     //assert
-    // expect(produto.message).to.equal('Product not found');
- // })
+     expect(produto).to.be.undefined;
+  })
+  it('Atualiza um produto', async function () {
+    //arrange
+    sinon.stub(connection, 'execute').resolves();
+    //act
+    const produto = await productsModel.update(1, "Martelo do Batman");
+    //assert
+    expect(produto).to.be.undefined;
+  })
+  it('Deleta um produto', async function () {
+    //arrange
+    sinon.stub(connection, 'execute').resolves();
+    //act
+    const result = await productsModel.deleteProduct(1);
+    //assert
+    expect(result).to.be.undefined;
+  })
   afterEach(function () {
     sinon.restore();
   });

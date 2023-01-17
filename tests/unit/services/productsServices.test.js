@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const productsModel = require('../../../src/models/products.model');
 const productsService = require('../../../src/services/products.services');
 
-const allProducts = require('../mocks/products.mock');
+const { allProducts, oneProduct } = require('../mocks/products.mock');
 
 describe('Teste da camada service de produtos', function () {
   it('Busca por todos os produtos', async function () {
@@ -24,14 +24,17 @@ describe('Teste da camada service de produtos', function () {
     expect(products.type).to.be.equal(null);
     expect(products.message).to.be.deep.equal(allProducts[0]);
   });
-  // it('Busca por um id inválido', async function () {
+  it('Insere um novo produto', async function () {
     // arrange
-    // sinon.stub(productsModel, 'getById').resolves(undefined);
+    sinon.stub(productsModel, 'insert').resolves([4]);
+    sinon.stub(productsModel, 'getById').resolves(oneProduct.message);
     // act
-    // const products = await productsService.getById('idInvalido');
+    const returnedId = await productsService.insert({
+      "name": "ProdutoX"
+    });
     // assertion
-    //expect(products).to.be.equal('"id" must be a number');
-  // })
+    expect(returnedId).to.be.deep.equal(oneProduct);
+  })
   afterEach(function () {
     sinon.restore();
   });

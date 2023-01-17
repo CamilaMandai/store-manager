@@ -175,11 +175,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3006/sales/155",
-    "url": "http://localhost:3006/sales/155",
+    "url": "http://localhost:3006/sales/1",
     "method": "GET",
     "sortNum": 0,
     "created": "2023-01-16T18:40:15.114Z",
-    "modified": "2023-01-16T18:40:15.114Z",
+    "modified": "2023-01-17T23:42:21.805Z",
     "headers": [],
     "params": [],
     "body": {
@@ -198,12 +198,12 @@
     "method": "PUT",
     "sortNum": 0,
     "created": "2023-01-16T19:30:56.384Z",
-    "modified": "2023-01-16T19:30:56.384Z",
+    "modified": "2023-01-17T23:05:52.073Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n  \"name\": \"Martelo do Batman\"\r\n}",
+      "raw": "{\n  \"name\": \"Martelo do Batman\"\n}",
       "form": []
     },
     "tests": []
