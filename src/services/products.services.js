@@ -36,6 +36,10 @@ const deleteProduct = async (id) => {
 };
 
 const search = async (q) => {
+  if (!q) {
+    const allProducts = await productsModel.findAll();
+    return { type: null, message: allProducts };
+  }
   const products = await productsModel.search(q);
   return { type: null, message: products[0] };
 };
