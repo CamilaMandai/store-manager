@@ -26,8 +26,22 @@ const insert = async (products) => {
   return { type: null, message: saleInserted };
 };
 
+const validateSaleId = async (id) => {
+  const sale = await salesModel.getById(id);
+  if (sale.length === 0) return true;
+  return false;
+};
+
+const deleteSale = async (id) => {
+  const error = await validateSaleId(id);
+  if (error) return { type: 'INVALID_ID', message: 'Sale not found' };
+  await salesModel.deleteSale(id);
+  return { type: null, message: 'Sale deleted' };
+};
+
 module.exports = {
   findAll,
   getById,
   insert,
+  deleteSale,
 };

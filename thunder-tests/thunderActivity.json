@@ -151,15 +151,15 @@
     "containerId": "",
     "name": "http://localhost:3006/sales/1",
     "url": "http://localhost:3006/sales/1",
-    "method": "GET",
+    "method": "DELETE",
     "sortNum": 0,
     "created": "2023-01-16T18:30:22.810Z",
-    "modified": "2023-01-16T20:09:29.567Z",
+    "modified": "2023-01-17T17:32:52.407Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n  \"name\": \"Martelo do Batman\"\r\n}",
+      "raw": "{\n  \"name\": \"Martelo do Batman\"\n}",
       "form": []
     },
     "tests": []

@@ -13,4 +13,6 @@ router.post('/',
   validadeSaleFields.validadeQuantityField,
   salesController.insertSale);
 
+router.delete('/:id', salesController.deleteSale);
+
 module.exports = router;
