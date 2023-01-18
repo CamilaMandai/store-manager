@@ -37,6 +37,14 @@ describe('Teste da camada Models de sales', function () {
     // assertion
     expect(response).to.be.deep.equal(saleCreateResponse);
   })
+  it('testa se é possível deletar uma venda', async function () {
+    // arrange
+    sinon.stub(connection, 'execute').resolves();
+    // act
+    const response = await salesModel.deleteSale(1);
+    // assertion
+    expect(response).to.be.undefined;
+  })
   afterEach(function () {
     sinon.restore();
   })
