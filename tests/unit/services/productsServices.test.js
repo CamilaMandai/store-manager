@@ -35,6 +35,14 @@ describe('Teste da camada service de produtos', function () {
     // assertion
     expect(returnedId).to.be.deep.equal(oneProduct);
   })
+  it('Atualiza um produto', async function () {
+    // arrange
+    sinon.stub(productsModel, 'getById').resolves(oneProduct.message);
+    // act
+    const result = await productsService.update(4, 'ProdutoX');
+    // assertion
+    expect(result).to.be.deep.equal(oneProduct);
+  })
   afterEach(function () {
     sinon.restore();
   });

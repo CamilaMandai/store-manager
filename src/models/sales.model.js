@@ -45,11 +45,19 @@ const deleteSale = async (id) => {
 };
 
 const update = async (id, products) => {
-  products.forEach(async (product) => {
-  const query = `UPDATE StoreManager.sales_products SET product_id=${product.productId},`
-    + `quantity=${product.quantity} WHERE sale_id=${id}`;
-  await connection.execute(query);
-  });
+  await connection.execute('DELETE FROM StoreManager.sales_products WHERE sale_id=?', [id]);
+  const nestedValues = [products.map((product) =>
+    [id, Number(product.productId), Number(product.quantity)])];
+  await connection.query(
+    'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES ?',
+    nestedValues,
+    // (err) => { if (err) throw err; connection.end(); },
+  );
+  // products.forEach(async (product) => {
+  // const query = `UPDATE StoreManager.sales_products SET product_id=${product.productId},`
+  //   + `quantity=${product.quantity} WHERE sale_id=${id}`;
+  // await connection.execute(query);
+  // });
   const updatedSale = await getById(id);
   return {
     saleId: id,

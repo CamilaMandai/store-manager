@@ -4,7 +4,7 @@ const productsModel = require('../../../src/models/products.model');
 
 const connection = require('../../../src/models/connection');
 
-const { allProducts } = require('../mocks/products.mock');
+const { allProducts, oneProduct } = require('../mocks/products.mock');
 
 describe('Teste de unidade da camada model de produtos', function () {
   it('Busca todos os produtos do banco de dados', async function () {
@@ -58,6 +58,15 @@ describe('Teste de unidade da camada model de produtos', function () {
     const result = await productsModel.deleteProduct(1);
     //assert
     expect(result).to.be.undefined;
+  })
+  it('Busca um produto pelo match de uma query', async function () {
+    //arrange
+    sinon.stub(connection, 'execute').onFirstCall().resolves(allProducts);
+    sinon.stub(connection, 'execute').onSecondCall().resolves(allProducts[0]);
+    //act
+    const result = await productsModel.search('Martelo');
+    //assert
+    expect(result).to.be.deep.equal([allProducts[0]]);
   })
   afterEach(function () {
     sinon.restore();
